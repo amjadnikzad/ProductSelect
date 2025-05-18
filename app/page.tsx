@@ -54,24 +54,26 @@ const treeData = adaptTreeData(rawBackendData, 'end');
 export default function Home() {
   return (
     <div className="min-h-screen p-4 md:p-6 bg-gray-50">
-      <h1 className="text-2xl font-bold mb-6 text-center md:text-left">
-        E-commerce Data Manager
-      </h1>
+  <h1 className="text-2xl font-bold mb-6 text-center md:text-left">
+    E-commerce Data Manager
+  </h1>
 
-      <div className="flex flex-col md:flex-row gap-6 w-full">
-        <TreeProvider>
-          <div className="w-full md:w-1/2">
-            <TreeView
-              treeData={treeData}
-              className="w-full bg-white border rounded-md shadow-sm p-4"
-            />
-          </div>
-
-          <div className="w-full md:w-[450px] bg-gray-100 p-4 rounded-md shadow-sm">
-            <DynamicForm className="bg-white p-4 rounded shadow w-full" />
-          </div>
-        </TreeProvider>
+  <div className="flex flex-col md:flex-row gap-6 w-full">
+    <TreeProvider>
+      {/* Tree View: narrower on desktop */}
+      <div className="w-full md:flex-[1]">
+        <TreeView
+          treeData={treeData}
+          className="w-full bg-white border rounded-md shadow-sm p-4"
+        />
       </div>
-    </div>
+
+      {/* Form View: wider on desktop */}
+      <div className="w-full md:flex-[2] bg-gray-100 p-4 rounded-md shadow-sm">
+        <DynamicForm className="bg-white p-6 rounded shadow w-full" />
+      </div>
+    </TreeProvider>
+  </div>
+</div>
   )
 }
