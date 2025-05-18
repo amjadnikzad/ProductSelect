@@ -1,4 +1,6 @@
 import type React from "react"
+import { ConfigProvider } from 'antd';
+
 import "./globals.css"
 import type { Metadata } from "next"
 
@@ -14,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html dir='rtl' lang="en">
+    <ConfigProvider direction="rtl">
       <body>{children}</body>
+      </ConfigProvider>
     </html>
   )
 }
